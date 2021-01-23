@@ -1,7 +1,14 @@
+import { Switch, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Dashboard from "./screens/Dashboard";
+
 function App() {
   return (
-    <div>
-      <h1 className='text-3xl'>covidata</h1>
+    <div className='font-source-sans'>
+      <Navbar />
+      <Switch>
+        <Route path='/' component={Dashboard} exact />
+      </Switch>
     </div>
   );
 }
