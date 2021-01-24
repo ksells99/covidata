@@ -9,8 +9,11 @@ const DashCard = ({ type, color, newTitle, totalTitle }) => {
   const [combined, setCombined] = useState(0);
   const [lastUpdated, setLastUpdated] = useState("01/01/2021");
   const [loading, setLoading] = useState(false);
+  const [dataError, setDataError] = useState(null);
 
   const fetchCases = async () => {
+    setDataError(null);
+    setLoading(false);
     try {
       // Get data from gov API
       const {
@@ -27,6 +30,7 @@ const DashCard = ({ type, color, newTitle, totalTitle }) => {
       //
     } catch (error) {
       console.error(error);
+      setDataError("Error fetching data. Reload to try again.");
     }
   };
 
@@ -60,14 +64,13 @@ const DashCard = ({ type, color, newTitle, totalTitle }) => {
     }
 
     setLoading(false);
-    console.log("hello");
   }, [type]);
 
   return (
     <div
       className={`w-full md:w-5/12   mb-5 md:mb-0 text-left font-semibold  rounded-md overflow-hidden bg-${color}`}
     >
-      <Link to={`uk-${type}`}>
+      <Link to={`uk/${type}`}>
         <div className='flex flex-col justify-between h-full p-5'>
           <div>
             <h3 className='text-md mb-1'>{newTitle}</h3>
