@@ -30,10 +30,6 @@ const AllRegions = () => {
     }
   };
 
-  const clearSearch = () => {
-    setSearch("");
-  };
-
   useEffect(() => {
     fetchData();
   }, []);

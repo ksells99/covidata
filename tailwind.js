@@ -772,6 +772,8 @@ module.exports = {
       "focus-within",
       "hover",
       "focus",
+      "even",
+      "odd",
     ],
     backgroundImage: ["responsive"],
     backgroundOpacity: [
