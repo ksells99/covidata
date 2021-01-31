@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Loading from "./Loading";
 
 const AllRegions = () => {
   const [data, setData] = useState([]);
@@ -34,10 +35,12 @@ const AllRegions = () => {
     fetchData();
   }, []);
 
-  return (
-    <>
+  return loading ? (
+    <Loading type='regional' />
+  ) : (
+    <div>
       <div className='mb-5'>
-        <span className='z-10  leading-snug font-normal absolute text-center text-gray-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3'>
+        <span className='z-10  leading-snug font-normal  text-center text-gray-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3'>
           <i className='fas fa-search'></i>
         </span>
 
@@ -47,7 +50,7 @@ const AllRegions = () => {
             placeholder='Search regions'
             value={search || ""}
             onChange={(e) => setSearch(e.target.value)}
-            className='px-3 py-3 placeholder-gray-400 text-gray-700 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full pl-10'
+            className='px-3 py-3 placeholder-gray-400 text-gray-700 relative  bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full pl-10'
           />
           <button
             className='bg-charcoal ml-1 w-10 rounded'
@@ -84,7 +87,7 @@ const AllRegions = () => {
                 </Link>
               ))}
       </div>
-    </>
+    </div>
   );
 };
 

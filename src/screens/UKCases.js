@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { Bar, Line } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import dayjs from "dayjs";
 import numeral from "numeral";
+import Loading from "../components/Loading";
 
 const UKCases = () => {
   const [loading, setLoading] = useState(false);
@@ -26,6 +27,7 @@ const UKCases = () => {
 
   const fetchData = async () => {
     setLoading(true);
+    setDataError(null);
 
     try {
       let dates = [];
@@ -81,6 +83,7 @@ const UKCases = () => {
       className='px-2 sm:px-10 text-center md:text-left mx-auto'
       style={{ maxWidth: "1000px" }}
     >
+      {/* NAV BUTTONS */}
       <div className='flex  justify-between mt-3'>
         <Link
           to={"/"}
@@ -95,46 +98,56 @@ const UKCases = () => {
           UK Deaths <i class='fas fa-arrow-alt-circle-right'></i>
         </Link>
       </div>
+
+      {/* PAGE HEADER */}
       <h1 className='pt-5 mb-5 text-xl sm:text-2xl'>
         {`UK cases (past 90 days)`}{" "}
       </h1>
-      <div className='chart'>
-        {!loading && <Bar data={chartData} options={chartOptions}></Bar>}
-      </div>
 
-      <p className='bg-lavender1 rounded p-3 text-center text-sm sm:text-base mt-5'>
-        Number of people with at least one positive COVID-19 test result (either
-        lab-reported or lateral flow device), by specimen date. Individuals
-        tested positive more than once are only counted once, on the date of
-        their first positive test.
-      </p>
+      {/* CONTENT */}
+      {loading ? (
+        <Loading type='case' />
+      ) : dataError ? (
+        <p className='text-md font-light italic'>{dataError}</p>
+      ) : (
+        <div>
+          <div className='chart'>
+            <Bar data={chartData} options={chartOptions}></Bar>
+          </div>
 
-      {!loading && (
-        <div id='table-wrapper' className='my-5'>
-          <table class='table-fixed rounded w-full shadow-sm text-center md:text-left '>
-            <thead>
-              <tr>
-                <th className='bg-charcoal rounded-tl text-gray-50  px-8 py-3 w-1/2'>
-                  Date
-                </th>
-                <th className='bg-charcoal rounded-tr text-gray-50  px-8 py-3 w-1/2'>
-                  Cases
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {tableData.map((day) => (
-                <tr className='even:bg-lavender1 odd:bg-lavender2 border-b border-lavender2'>
-                  <td className=' px-8 py-2'>
-                    {dayjs(day.date).format("DD/MM/YYYY")}
-                  </td>
-                  <td className=' px-8 py-2'>
-                    {numeral(day.newCasesByPublishDate).format("0,0")}
-                  </td>
+          <p className='bg-lavender1 rounded p-3 text-center text-sm sm:text-base mt-5'>
+            Number of people with at least one positive COVID-19 test result
+            (either lab-reported or lateral flow device), by specimen date.
+            Individuals tested positive more than once are only counted once, on
+            the date of their first positive test.
+          </p>
+
+          <div id='table-wrapper' className='my-5'>
+            <table class='table-fixed rounded w-full shadow-sm text-center md:text-left '>
+              <thead>
+                <tr>
+                  <th className='bg-charcoal rounded-tl text-gray-50  px-8 py-3 w-1/2'>
+                    Date
+                  </th>
+                  <th className='bg-charcoal rounded-tr text-gray-50  px-8 py-3 w-1/2'>
+                    Cases
+                  </th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {tableData.map((day) => (
+                  <tr className='even:bg-lavender1 odd:bg-lavender2 border-b border-lavender2'>
+                    <td className=' px-8 py-2'>
+                      {dayjs(day.date).format("DD/MM/YYYY")}
+                    </td>
+                    <td className=' px-8 py-2'>
+                      {numeral(day.newCasesByPublishDate).format("0,0")}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
     </div>

@@ -29,7 +29,7 @@ const Dashboard = () => {
 
       <section id='regional-data' className='bg-lavender2'>
         <div className='px-10  mx-auto' style={{ maxWidth: "1000px" }}>
-          <h1 className='pt-5 mb-5 text-2xl'>Regional data</h1>
+          <h1 className='pt-5 mb-5 text-2xl'>{`Regional data (past 24 hours)`}</h1>
           <AllRegions />
         </div>
       </section>

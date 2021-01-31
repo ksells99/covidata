@@ -7,14 +7,13 @@ import numeral from "numeral";
 const DashCard = ({ type, color, newTitle, totalTitle }) => {
   const [recent, setRecent] = useState(0);
   const [combined, setCombined] = useState(0);
-  const [lastUpdated, setLastUpdated] = useState("01/01/2021");
+  const [lastUpdated, setLastUpdated] = useState("01/01/1970");
   const [loading, setLoading] = useState(false);
   const [dataError, setDataError] = useState(null);
 
   const fetchCases = async () => {
-    setDataError(null);
-    setLoading(false);
     try {
+      setDataError(null);
       // Get data from gov API
       const {
         data: { data },
@@ -27,14 +26,18 @@ const DashCard = ({ type, color, newTitle, totalTitle }) => {
       setCombined(data[0].cumCasesByPublishDate);
       setLastUpdated(data[0].date);
 
+      setLoading(false);
+
       //
     } catch (error) {
+      setLoading(false);
       console.error(error);
       setDataError("Error fetching data. Reload to try again.");
     }
   };
 
   const fetchDeaths = async () => {
+    setDataError(null);
     try {
       // Get data from gov API
       const {
@@ -48,9 +51,13 @@ const DashCard = ({ type, color, newTitle, totalTitle }) => {
       setCombined(data[0].cumDeaths28DaysByPublishDate);
       setLastUpdated(data[0].date);
 
+      setLoading(false);
+
       //
     } catch (error) {
+      setLoading(false);
       console.error(error);
+      setDataError("Error fetching data. Reload to try again.");
     }
   };
 
@@ -62,8 +69,6 @@ const DashCard = ({ type, color, newTitle, totalTitle }) => {
     } else {
       fetchDeaths();
     }
-
-    setLoading(false);
   }, [type]);
 
   return (
@@ -75,14 +80,26 @@ const DashCard = ({ type, color, newTitle, totalTitle }) => {
           <div>
             <h3 className='text-md mb-1'>{newTitle}</h3>
             <h2 className='text-2xl mb-3 font-bold'>
-              {numeral(recent).format("0,0")}
+              {loading ? (
+                "-"
+              ) : dataError ? (
+                <p className='text-sm font-light italic'>{dataError}</p>
+              ) : (
+                numeral(recent).format("0,0")
+              )}
             </h2>
           </div>
 
           <div>
             <h3 className='text-md mb-1 text-right'>{totalTitle}</h3>
             <h2 className='text-2xl text-right font-bold'>
-              {numeral(combined).format("0,0")}
+              {loading ? (
+                "-"
+              ) : dataError ? (
+                <p className='text-sm font-light italic'>{dataError}</p>
+              ) : (
+                numeral(combined).format("0,0")
+              )}
             </h2>
           </div>
           <p className='text-xs italic mt-3 '>{`Last updated ${dayjs(
