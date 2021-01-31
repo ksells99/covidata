@@ -6,7 +6,7 @@ import App from "./App";
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter baseName='/covidata'>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <App />
     </BrowserRouter>
   </React.StrictMode>,
