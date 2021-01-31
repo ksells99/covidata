@@ -5,11 +5,13 @@ import Loading from "./Loading";
 
 const AllRegions = () => {
   const [data, setData] = useState([]);
+  const [dataError, setDataError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
 
   const fetchData = async () => {
     setLoading(true);
+    setDataError(null);
     try {
       // Get data from gov API
       const {
@@ -18,8 +20,6 @@ const AllRegions = () => {
         `https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=utla&latestBy=date&structure={"date":"date","newCases":"newCasesByPublishDate","newDeaths":"newDeaths28DaysByPublishDate","region":"areaName","regionId":"areaCode"}`
       );
 
-      console.log(data);
-
       setLoading(false);
       setData(data);
 
@@ -27,7 +27,7 @@ const AllRegions = () => {
     } catch (error) {
       setLoading(false);
       console.error(error);
-      //   setDataError("Error fetching data. Reload to try again.");
+      setDataError("Error fetching data. Reload to try again.");
     }
   };
 
@@ -37,6 +37,8 @@ const AllRegions = () => {
 
   return loading ? (
     <Loading type='regional' />
+  ) : dataError ? (
+    <p className='text-md font-light italic'>{dataError}</p>
   ) : (
     <div>
       <div className='mb-5'>

@@ -16,7 +16,6 @@ const Region = ({ match }) => {
 
   //   Get region ID from URL
   const regionId = match.params.id;
-  console.log(regionId);
 
   //   Define chart scaling options
   const caseChartOptions = {
@@ -116,6 +115,8 @@ const Region = ({ match }) => {
 
   useEffect(() => {
     fetchData();
+
+    // eslint-disable-next-line
   }, []);
 
   return (

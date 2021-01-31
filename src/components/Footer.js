@@ -8,6 +8,7 @@ const Footer = () => {
         <a
           href='https://www.kai-sells.co.uk'
           target='_blank'
+          rel='noreferrer'
           className='hover:text-charcoal font-bold'
         >
           Kai Sells
@@ -16,6 +17,7 @@ const Footer = () => {
         <a
           href='https://coronavirus.data.gov.uk/details/developers-guide'
           target='_blank'
+          rel='noreferrer'
           className='hover:text-charcoal font-bold'
         >
           GOV.UK Covid-19 API
@@ -23,7 +25,11 @@ const Footer = () => {
       </p>
       <button className='mt-5 bg-charcoal text-gray-100 px-5 py-2 rounded text-sm font-semibold hover:bg-gray-600'>
         <i className='fab fa-github mr-2'></i>
-        <a href='https://github.com/ksells99/covidata' target='_blank'>
+        <a
+          href='https://github.com/ksells99/covidata'
+          target='_blank'
+          rel='noreferrer'
+        >
           View GitHub Repo
         </a>
       </button>
