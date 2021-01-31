@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/covidata/static/css/main.192a5463.chunk.css",
-    "main.js": "/covidata/static/js/main.e618bf3a.chunk.js",
-    "main.js.map": "/covidata/static/js/main.e618bf3a.chunk.js.map",
+    "main.js": "/covidata/static/js/main.5704a4ea.chunk.js",
+    "main.js.map": "/covidata/static/js/main.5704a4ea.chunk.js.map",
     "runtime-main.js": "/covidata/static/js/runtime-main.ee90a20c.js",
     "runtime-main.js.map": "/covidata/static/js/runtime-main.ee90a20c.js.map",
     "static/js/2.0ae63c0a.chunk.js": "/covidata/static/js/2.0ae63c0a.chunk.js",
@@ -16,6 +16,6 @@
     "static/js/runtime-main.ee90a20c.js",
     "static/js/2.0ae63c0a.chunk.js",
     "static/css/main.192a5463.chunk.css",
-    "static/js/main.e618bf3a.chunk.js"
+    "static/js/main.5704a4ea.chunk.js"
   ]
 }
