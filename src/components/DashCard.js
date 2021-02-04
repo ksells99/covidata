@@ -73,7 +73,7 @@ const DashCard = ({ type, color, newTitle, totalTitle }) => {
 
   return (
     <div
-      className={`w-full md:w-5/12   mb-5 md:mb-0 text-left font-semibold  rounded-md overflow-hidden bg-${color}`}
+      className={`w-full md:w-5/12   mb-5 md:mb-0 text-left font-semibold  rounded-md overflow-hidden bg-${color} hover:bg-${color}Hover transform hover:scale-102 ease-in-out duration-200`}
     >
       <Link to={`uk/${type}`}>
         <div className='flex flex-col justify-between h-full p-5'>

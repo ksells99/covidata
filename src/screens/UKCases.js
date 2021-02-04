@@ -87,13 +87,13 @@ const UKCases = () => {
       <div className='flex  justify-between mt-3'>
         <Link
           to={"/"}
-          className=' bg-lavender1 font-semibold text-lg px-3 py-1 rounded'
+          className=' bg-lavender1 hover:bg-gray-400 ease-in-out duration-100 font-semibold text-lg px-3 py-1 rounded'
         >
           <i class='fas fa-arrow-alt-circle-left'></i> Dashboard
         </Link>
         <Link
           to={"/uk/deaths"}
-          className='  bg-goldenrod font-semibold text-lg px-3 py-1 rounded'
+          className='  bg-goldenrod hover:bg-goldenrodHover ease-in-out duration-100 font-semibold text-lg px-3 py-1 rounded'
         >
           UK Deaths <i class='fas fa-arrow-alt-circle-right'></i>
         </Link>

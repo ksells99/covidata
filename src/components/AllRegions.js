@@ -55,7 +55,7 @@ const AllRegions = () => {
             className='px-3 py-3 placeholder-gray-400 text-gray-700 relative  bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full pl-10'
           />
           <button
-            className='bg-charcoal ml-1 w-10 rounded'
+            className='bg-charcoal hover:bg-gray-800 ease-in-out duration-200 ml-1 w-10 rounded'
             onClick={(e) => setSearch("")}
           >
             <i className='fas fa-undo text-gray-50'></i>
@@ -73,7 +73,7 @@ const AllRegions = () => {
               .map((region) => (
                 <Link to={`region/${region.regionId}`} key={region.regionId}>
                   <div
-                    className={`w-full  p-5 mb-5 md:mb-0 text-left font-semibold  rounded-md bg-pacific text-gray-50`}
+                    className={`w-full  p-5 mb-5 md:mb-0 text-left font-semibold  rounded-md bg-pacific hover:bg-pacificHover ease-in-out duration-100 text-gray-50`}
                   >
                     <div className='flex flex-col'>
                       <p className='text-md font-normal'>{region.region}</p>
