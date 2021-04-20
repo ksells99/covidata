@@ -17,7 +17,7 @@ const AllRegions = () => {
       const {
         data: { data },
       } = await axios.get(
-        `https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=utla&latestBy=date&structure={"date":"date","newCases":"newCasesByPublishDate","newDeaths":"newDeaths28DaysByPublishDate","region":"areaName","regionId":"areaCode"}`
+        `https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=utla&latestBy=newCasesByPublishDate&structure={"date":"date","newCases":"newCasesByPublishDate","newDeaths":"newDeaths28DaysByPublishDate","region":"areaName","regionId":"areaCode"}`
       );
 
       setLoading(false);

@@ -18,7 +18,7 @@ const UKCases = () => {
         {
           ticks: {
             beginAtZero: true,
-            stepSize: 20000,
+            stepSize: 10000,
           },
         },
       ],

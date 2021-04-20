@@ -130,7 +130,7 @@ const Region = ({ match }) => {
           to={"/"}
           className=' bg-lavender1 hover:bg-gray-400 ease-in-out duration-100 font-semibold text-lg px-3 py-1 rounded'
         >
-          <i class='fas fa-arrow-alt-circle-left'></i> Dashboard
+          <i className='fas fa-arrow-alt-circle-left'></i> Dashboard
         </Link>
       </div>
 
@@ -179,7 +179,7 @@ const Region = ({ match }) => {
           <section id='table'>
             <div id='table-wrapper' className='mt-10 mb-5'>
               <h2 className='text-lg underline mt-8 mb-4 '>Daily summary</h2>
-              <table class='table-fixed rounded w-full shadow-sm text-center md:text-left '>
+              <table className='table-fixed rounded w-full shadow-sm text-center md:text-left '>
                 <thead>
                   <tr>
                     <th className='bg-charcoal rounded-tl text-gray-50  px-8 py-3 w-1/2'>

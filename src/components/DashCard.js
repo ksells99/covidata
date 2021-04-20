@@ -18,7 +18,7 @@ const DashCard = ({ type, color, newTitle, totalTitle }) => {
       const {
         data: { data },
       } = await axios.get(
-        `https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=overview&latestBy=date&structure={"date":"date", "newCasesByPublishDate":"newCasesByPublishDate","cumCasesByPublishDate":"cumCasesByPublishDate"}`
+        `https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=overview&latestBy=newCasesByPublishDate&structure={"date":"date", "newCasesByPublishDate":"newCasesByPublishDate","cumCasesByPublishDate":"cumCasesByPublishDate"}`
       );
 
       // Get first object from array (latest date) and set state
@@ -43,7 +43,7 @@ const DashCard = ({ type, color, newTitle, totalTitle }) => {
       const {
         data: { data },
       } = await axios.get(
-        `https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=overview&latestBy=date&structure={"date":"date","newDeaths28DaysByPublishDate":"newDeaths28DaysByPublishDate","cumDeaths28DaysByPublishDate":"cumDeaths28DaysByPublishDate" }`
+        `https://api.coronavirus.data.gov.uk/v1/data?filters=areaType=overview&latestBy=newDeaths28DaysByPublishDate&structure={"date":"date","newDeaths28DaysByPublishDate":"newDeaths28DaysByPublishDate","cumDeaths28DaysByPublishDate":"cumDeaths28DaysByPublishDate" }`
       );
 
       // Get first object from array (latest date) and set state
